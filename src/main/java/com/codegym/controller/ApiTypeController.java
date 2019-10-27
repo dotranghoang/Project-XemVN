@@ -51,7 +51,7 @@ public class ApiTypeController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
-        type1.setType(type1.getType());
+        type1.setType(type.getType());
         typeService.save(type1);
 
         return new ResponseEntity<>(type1,HttpStatus.OK);

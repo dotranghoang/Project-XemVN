@@ -1,5 +1,6 @@
 package com.codegym.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 import java.util.List;
 
@@ -13,9 +14,11 @@ public class User {
     private String account;
     private String password;
 
+    @JsonIgnore
     @OneToMany(targetEntity = Post.class)
     private List<Post> posts;
 
+    @JsonIgnore
     @OneToMany(targetEntity = Community.class)
     private List<Community> communities;
 

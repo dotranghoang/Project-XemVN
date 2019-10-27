@@ -1,7 +1,7 @@
 package com.codegym.model;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -15,7 +15,27 @@ public class Post {
     private String title;
     private String video;
     private String image;
-    private Date timer;
+    private LocalDate timer;
+    private String typeId;
+
+    public Post(String title, String video, String image, LocalDate timer, String typeId, List<Community> communities, User user, Type type) {
+        this.title = title;
+        this.video = video;
+        this.image = image;
+        this.timer = timer;
+        this.typeId = typeId;
+        this.communities = communities;
+        this.user = user;
+        this.type = type;
+    }
+
+    public String getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(String typeId) {
+        this.typeId = typeId;
+    }
 
     @OneToMany(targetEntity = Community.class)
     private List<Community> communities;
@@ -28,7 +48,7 @@ public class Post {
     @JoinColumn(name = "type_id")
     private Type type;
 
-    public Post(String title, String video, String image, Date timer, List<Community> communities, User user, Type type) {
+    public Post(String title, String video, String image, LocalDate timer, List<Community> communities, User user, Type type) {
         this.title = title;
         this.video = video;
         this.image = image;
@@ -46,7 +66,7 @@ public class Post {
         this.communities = communities;
     }
 
-    public Post(String title, String video, String image, Date timer, User user, Type type) {
+    public Post(String title, String video, String image, LocalDate timer, User user, Type type) {
         this.title = title;
         this.video = video;
         this.image = image;
@@ -63,7 +83,7 @@ public class Post {
         this.user = user;
     }
 
-    public Post(String title, String video, String image, Date timer, Type type) {
+    public Post(String title, String video, String image, LocalDate timer, Type type) {
         this.title = title;
         this.video = video;
         this.image = image;
@@ -82,7 +102,7 @@ public class Post {
     public Post() {
     }
 
-    public Post(String title, String video, String image, Date timer) {
+    public Post(String title, String video, String image, LocalDate timer) {
         this.title = title;
         this.video = video;
         this.image = image;
@@ -121,11 +141,11 @@ public class Post {
         this.image = image;
     }
 
-    public Date getTimer() {
+    public LocalDate getTimer() {
         return timer;
     }
 
-    public void setTimer(Date timer) {
+    public void setTimer(LocalDate timer) {
         this.timer = timer;
     }
 }
