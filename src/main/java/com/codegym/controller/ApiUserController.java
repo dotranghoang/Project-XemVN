@@ -44,7 +44,7 @@ public class ApiUserController {
     }
 
     @PutMapping("/api/user/{id}")
-    public ResponseEntity<User> updateTypeNote(@RequestBody User user,@PathVariable Long id){
+    public ResponseEntity<User> updateType(@RequestBody User user,@PathVariable Long id){
          User user1 = userService.findById(id);
 
         if(user1 == null){
@@ -60,7 +60,7 @@ public class ApiUserController {
     }
 
     @DeleteMapping("/api/user/{id}")
-    public ResponseEntity<Void> deleteTypeNote(@PathVariable Long id){
+    public ResponseEntity<Void> deleteType(@PathVariable Long id){
         User user = userService.findById(id);
 
         if(user == null) {

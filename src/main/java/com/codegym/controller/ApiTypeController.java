@@ -44,7 +44,7 @@ public class ApiTypeController {
     }
 
     @PutMapping("/api/types/{id}")
-    public ResponseEntity<Type> updateTypeNote(@RequestBody Type type,@PathVariable Long id){
+    public ResponseEntity<Type> updateType(@RequestBody Type type,@PathVariable Long id){
         Type type1 = typeService.findById(id);
 
         if(type1 == null){
@@ -58,7 +58,7 @@ public class ApiTypeController {
     }
 
     @DeleteMapping("/api/types/{id}")
-    public ResponseEntity<Void> deleteTypeNote(@PathVariable Long id){
+    public ResponseEntity<Void> deleteType(@PathVariable Long id){
         Type type = typeService.findById(id);
 
         if(type == null) {

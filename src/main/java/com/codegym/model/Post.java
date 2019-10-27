@@ -1,7 +1,9 @@
 package com.codegym.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -15,28 +17,11 @@ public class Post {
     private String title;
     private String video;
     private String image;
-    private LocalDate timer;
-    private String typeId;
+    private LocalDateTime date;
+    private Long typeId;
+    private Long userId;
 
-    public Post(String title, String video, String image, LocalDate timer, String typeId, List<Community> communities, User user, Type type) {
-        this.title = title;
-        this.video = video;
-        this.image = image;
-        this.timer = timer;
-        this.typeId = typeId;
-        this.communities = communities;
-        this.user = user;
-        this.type = type;
-    }
-
-    public String getTypeId() {
-        return typeId;
-    }
-
-    public void setTypeId(String typeId) {
-        this.typeId = typeId;
-    }
-
+    @JsonIgnore
     @OneToMany(targetEntity = Community.class)
     private List<Community> communities;
 
@@ -48,11 +33,52 @@ public class Post {
     @JoinColumn(name = "type_id")
     private Type type;
 
-    public Post(String title, String video, String image, LocalDate timer, List<Community> communities, User user, Type type) {
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public Post(String title, String video, String image, LocalDateTime date, Long typeId, Long userId, List<Community> communities, User user, Type type) {
         this.title = title;
         this.video = video;
         this.image = image;
-        this.timer = timer;
+        this.date = date;
+        this.typeId = typeId;
+        this.userId = userId;
+        this.communities = communities;
+        this.user = user;
+        this.type = type;
+    }
+
+    public Post(String title, String video, String image, LocalDateTime date, Long typeId, List<Community> communities, User user, Type type) {
+        this.title = title;
+        this.video = video;
+        this.image = image;
+        this.date = date;
+        this.typeId = typeId;
+        this.communities = communities;
+        this.user = user;
+        this.type = type;
+    }
+
+    public Long getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(Long typeId) {
+        this.typeId = typeId;
+    }
+
+
+
+    public Post(String title, String video, String image, LocalDateTime date, List<Community> communities, User user, Type type) {
+        this.title = title;
+        this.video = video;
+        this.image = image;
+        this.date = date;
         this.communities = communities;
         this.user = user;
         this.type = type;
@@ -66,11 +92,11 @@ public class Post {
         this.communities = communities;
     }
 
-    public Post(String title, String video, String image, LocalDate timer, User user, Type type) {
+    public Post(String title, String video, String image, LocalDateTime date, User user, Type type) {
         this.title = title;
         this.video = video;
         this.image = image;
-        this.timer = timer;
+        this.date = date;
         this.user = user;
         this.type = type;
     }
@@ -83,11 +109,11 @@ public class Post {
         this.user = user;
     }
 
-    public Post(String title, String video, String image, LocalDate timer, Type type) {
+    public Post(String title, String video, String image, LocalDateTime date, Type type) {
         this.title = title;
         this.video = video;
         this.image = image;
-        this.timer = timer;
+        this.date = date;
         this.type = type;
     }
 
@@ -102,11 +128,11 @@ public class Post {
     public Post() {
     }
 
-    public Post(String title, String video, String image, LocalDate timer) {
+    public Post(String title, String video, String image, LocalDateTime date) {
         this.title = title;
         this.video = video;
         this.image = image;
-        this.timer = timer;
+        this.date = date;
     }
 
     public Long getId() {
@@ -141,11 +167,11 @@ public class Post {
         this.image = image;
     }
 
-    public LocalDate getTimer() {
-        return timer;
+    public LocalDateTime getDate() {
+        return date;
     }
 
-    public void setTimer(LocalDate timer) {
-        this.timer = timer;
+    public void setDate(LocalDateTime date) {
+        this.date = date;
     }
 }
