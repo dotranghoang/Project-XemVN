@@ -15,6 +15,38 @@ public class Community {
 
     @Lob
     private String report;
+    private Long postId;
+    private Long userId;
+
+    public Community(Long like, Long share, String report, Long postId, Long userId, User user, Post post) {
+        this.like = like;
+        this.share = share;
+        this.report = report;
+        this.postId = postId;
+        this.userId = userId;
+        this.user = user;
+        this.post = post;
+    }
+
+    public Long getPostId() {
+        return postId;
+    }
+
+    public void setPostId(Long postId) {
+        this.postId = postId;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @ManyToOne
     @JoinColumn(name = "post_id")
@@ -25,6 +57,22 @@ public class Community {
         this.share = share;
         this.report = report;
         this.post = post;
+    }
+
+    public Community(Long like, Long share, String report, User user, Post post) {
+        this.like = like;
+        this.share = share;
+        this.report = report;
+        this.user = user;
+        this.post = post;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Post getPost() {
