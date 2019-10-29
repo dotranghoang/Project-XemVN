@@ -1,14 +1,9 @@
 package com.codegym;
 
 
-import com.codegym.service.CommunityService;
-import com.codegym.service.Impl.CommunityServiceImpl;
-import com.codegym.service.Impl.PostServiceImpl;
-import com.codegym.service.Impl.TypeServiceImpl;;
-import com.codegym.service.Impl.UserServiceImpl;
-import com.codegym.service.PostService;
-import com.codegym.service.TypeService;
-import com.codegym.service.UserService;
+import com.codegym.service.*;
+import com.codegym.service.Impl.*;
+;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
@@ -94,6 +89,8 @@ public class ApplicationConfig extends WebMvcConfigurerAdapter implements Applic
         return properties;
     }
 
+
+//    inject
     @Bean
     public TypeService typeService() {
         return new TypeServiceImpl();
@@ -110,8 +107,23 @@ public class ApplicationConfig extends WebMvcConfigurerAdapter implements Applic
     }
 
     @Bean
-    public CommunityService communityService(){
-        return new CommunityServiceImpl();
+    public ReportService reportService(){
+        return new ReportServiceImpl();
+    }
+
+    @Bean
+    public ShareService shareService(){
+        return new ShareServiceImpl();
+    }
+
+    @Bean
+    public LikeService likeService() {
+        return new LikeServiceImpl();
+    }
+
+    @Bean
+    public CommentService commentService(){
+        return new CommentServiceImpl();
     }
 }
 

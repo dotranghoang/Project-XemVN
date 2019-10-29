@@ -22,8 +22,86 @@ public class Post {
     private Long userId;
 
     @JsonIgnore
-    @OneToMany(targetEntity = Community.class)
-    private List<Community> communities;
+    @OneToMany(targetEntity = Report.class)
+    private List<Report> reports;
+
+    @JsonIgnore
+    @OneToMany(targetEntity = Comment.class)
+    private List<Comment> comments ;
+
+    @JsonIgnore
+    @OneToMany(targetEntity = Like.class)
+    private List<Like> likes ;
+
+    @JsonIgnore
+    @OneToMany(targetEntity = Share.class)
+    private List<Share> shares ;
+
+    public List<Share> getShares() {
+        return shares;
+    }
+
+    public void setShares(List<Share> shares) {
+        this.shares = shares;
+    }
+
+    public Post(String title, String video, String image, LocalDateTime date, Long typeId, Long userId, List<Report> reports, List<Comment> comments, List<Like> likes, List<Share> shares, User user, Type type) {
+        this.title = title;
+        this.video = video;
+        this.image = image;
+        this.date = date;
+        this.typeId = typeId;
+        this.userId = userId;
+        this.reports = reports;
+        this.comments = comments;
+        this.likes = likes;
+        this.shares = shares;
+        this.user = user;
+        this.type = type;
+    }
+
+    public List<Like> getLikes() {
+        return likes;
+    }
+
+    public void setLikes(List<Like> likes) {
+        this.likes = likes;
+    }
+
+    public Post(String title, String video, String image, LocalDateTime date, Long typeId, Long userId, List<Report> reports, List<Comment> comments, List<Like> likes, User user, Type type) {
+        this.title = title;
+        this.video = video;
+        this.image = image;
+        this.date = date;
+        this.typeId = typeId;
+        this.userId = userId;
+        this.reports = reports;
+        this.comments = comments;
+        this.likes = likes;
+        this.user = user;
+        this.type = type;
+    }
+
+    public Post(String title, String video, String image, LocalDateTime date, Long typeId, Long userId, List<Report> reports, List<Comment> comments, User user, Type type) {
+        this.title = title;
+        this.video = video;
+        this.image = image;
+        this.date = date;
+        this.typeId = typeId;
+        this.userId = userId;
+        this.reports = reports;
+        this.comments = comments;
+        this.user = user;
+        this.type = type;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -41,25 +119,25 @@ public class Post {
         this.userId = userId;
     }
 
-    public Post(String title, String video, String image, LocalDateTime date, Long typeId, Long userId, List<Community> communities, User user, Type type) {
+    public Post(String title, String video, String image, LocalDateTime date, Long typeId, Long userId, List<Report> reports, User user, Type type) {
         this.title = title;
         this.video = video;
         this.image = image;
         this.date = date;
         this.typeId = typeId;
         this.userId = userId;
-        this.communities = communities;
+        this.reports = reports;
         this.user = user;
         this.type = type;
     }
 
-    public Post(String title, String video, String image, LocalDateTime date, Long typeId, List<Community> communities, User user, Type type) {
+    public Post(String title, String video, String image, LocalDateTime date, Long typeId, List<Report> reports, User user, Type type) {
         this.title = title;
         this.video = video;
         this.image = image;
         this.date = date;
         this.typeId = typeId;
-        this.communities = communities;
+        this.reports = reports;
         this.user = user;
         this.type = type;
     }
@@ -74,22 +152,22 @@ public class Post {
 
 
 
-    public Post(String title, String video, String image, LocalDateTime date, List<Community> communities, User user, Type type) {
+    public Post(String title, String video, String image, LocalDateTime date, List<Report> reports, User user, Type type) {
         this.title = title;
         this.video = video;
         this.image = image;
         this.date = date;
-        this.communities = communities;
+        this.reports = reports;
         this.user = user;
         this.type = type;
     }
 
-    public List<Community> getCommunities() {
-        return communities;
+    public List<Report> getReports() {
+        return reports;
     }
 
-    public void setCommunities(List<Community> communities) {
-        this.communities = communities;
+    public void setReports(List<Report> reports) {
+        this.reports = reports;
     }
 
     public Post(String title, String video, String image, LocalDateTime date, User user, Type type) {

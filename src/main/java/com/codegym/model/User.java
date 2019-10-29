@@ -19,23 +19,89 @@ public class User {
     private List<Post> posts;
 
     @JsonIgnore
-    @OneToMany(targetEntity = Community.class)
-    private List<Community> communities;
+    @OneToMany(targetEntity = Report.class)
+    private List<Report> reports;
 
-    public User(String nickName, String account, String password, List<Post> posts, List<Community> communities) {
+    @JsonIgnore
+    @OneToMany(targetEntity = Comment.class)
+    private List<Comment> comments;
+
+    @JsonIgnore
+    @OneToMany(targetEntity = Like.class)
+    private List<Like> likes;
+
+    @JsonIgnore
+    @OneToMany(targetEntity = Share.class)
+    private List<Share> shares;
+
+    public List<Share> getShares() {
+        return shares;
+    }
+
+    public void setShares(List<Share> shares) {
+        this.shares = shares;
+    }
+
+    public User(String nickName, String account, String password, List<Post> posts, List<Report> reports, List<Comment> comments, List<Like> likes, List<Share> shares) {
         this.nickName = nickName;
         this.account = account;
         this.password = password;
         this.posts = posts;
-        this.communities = communities;
+        this.reports = reports;
+        this.comments = comments;
+        this.likes = likes;
+        this.shares = shares;
     }
 
-    public List<Community> getCommunities() {
-        return communities;
+    public List<Like> getLikes() {
+        return likes;
     }
 
-    public void setCommunities(List<Community> communities) {
-        this.communities = communities;
+    public void setLikes(List<Like> likes) {
+        this.likes = likes;
+    }
+
+    public User(String nickName, String account, String password, List<Post> posts, List<Report> reports, List<Comment> comments, List<Like> likes) {
+        this.nickName = nickName;
+        this.account = account;
+        this.password = password;
+        this.posts = posts;
+        this.reports = reports;
+        this.comments = comments;
+        this.likes = likes;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+
+    public User(String nickName, String account, String password, List<Post> posts, List<Report> reports, List<Comment> comments) {
+        this.nickName = nickName;
+        this.account = account;
+        this.password = password;
+        this.posts = posts;
+        this.reports = reports;
+        this.comments = comments;
+    }
+
+    public User(String nickName, String account, String password, List<Post> posts, List<Report> reports) {
+        this.nickName = nickName;
+        this.account = account;
+        this.password = password;
+        this.posts = posts;
+        this.reports = reports;
+    }
+
+    public List<Report> getReports() {
+        return reports;
+    }
+
+    public void setReports(List<Report> reports) {
+        this.reports = reports;
     }
 
     public User(String nickName, String account, String password, List<Post> posts) {
