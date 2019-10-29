@@ -27,7 +27,7 @@ public class ApiReportController {
     private UserService userService;
 
     @GetMapping("/api/report")
-    public ResponseEntity<List<Report>> listAllCommunity() {
+    public ResponseEntity<List<Report>> listAllReport() {
         List<Report> reports = (List<Report>) reportService.findAll();
 
         if (reports.isEmpty()) {
