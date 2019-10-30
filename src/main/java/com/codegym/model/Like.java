@@ -10,11 +10,11 @@ public class Like {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private Long like;
+    private boolean like;
     private Long postId;
     private Long userId;
 
-    public Like(Long like, Long postId, Long userId, User user, Post post) {
+    public Like(boolean like, Long postId, Long userId, User user, Post post) {
         this.like = like;
         this.postId = postId;
         this.userId = userId;
@@ -46,12 +46,12 @@ public class Like {
     @JoinColumn(name = "post_id")
     private Post post;
 
-    public Like(Long report, Post post) {
+    public Like(boolean report, Post post) {
         this.like = report;
         this.post = post;
     }
 
-    public Like(Long report, User user, Post post) {
+    public Like(boolean report, User user, Post post) {
         this.like = report;
         this.user = user;
         this.post = post;
@@ -80,15 +80,15 @@ public class Like {
     public void setId(Long id) {
         this.id = id;
     }
-    public Long getLike() {
+    public boolean isLike() {
         return like;
     }
 
-    public void setLike(Long like) {
+    public void setLike(boolean like) {
         this.like = like;
     }
 
-    public Like(Long like) {
+    public Like(boolean like) {
         this.like = like;
     }
 
