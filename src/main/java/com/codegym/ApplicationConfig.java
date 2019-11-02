@@ -161,5 +161,9 @@ public class ApplicationConfig extends WebMvcConfigurerAdapter implements Applic
     public CommentService commentService(){
         return new CommentServiceImpl();
     }
+
+    @Bean MultiFileService multiFileService(){
+        return new MultiFileServiceImpl();
+    }
 }
 

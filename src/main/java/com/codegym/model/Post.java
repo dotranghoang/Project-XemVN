@@ -15,8 +15,6 @@ public class Post {
     private Long id;
 
     private String title;
-    private String video;
-    private String image;
     private LocalDateTime date;
     private Long typeId;
     private Long userId;
@@ -37,6 +35,32 @@ public class Post {
     @OneToMany(targetEntity = Share.class)
     private List<Share> shares ;
 
+    @JsonIgnore
+    @OneToMany(targetEntity = MultiFile.class)
+    private List<MultiFile> files;
+
+    public List<MultiFile> getFiles() {
+        return files;
+    }
+
+    public void setFiles(List<MultiFile> files) {
+        this.files = files;
+    }
+
+    public Post(String title, LocalDateTime date, Long typeId, Long userId, List<Report> reports, List<Comment> comments, List<Like> likes, List<Share> shares, List<MultiFile> files, User user, Type type) {
+        this.title = title;
+        this.date = date;
+        this.typeId = typeId;
+        this.userId = userId;
+        this.reports = reports;
+        this.comments = comments;
+        this.likes = likes;
+        this.shares = shares;
+        this.files = files;
+        this.user = user;
+        this.type = type;
+    }
+
     public List<Share> getShares() {
         return shares;
     }
@@ -45,10 +69,8 @@ public class Post {
         this.shares = shares;
     }
 
-    public Post(String title, String video, String image, LocalDateTime date, Long typeId, Long userId, List<Report> reports, List<Comment> comments, List<Like> likes, List<Share> shares, User user, Type type) {
+    public Post(String title, LocalDateTime date, Long typeId, Long userId, List<Report> reports, List<Comment> comments, List<Like> likes, List<Share> shares, User user, Type type) {
         this.title = title;
-        this.video = video;
-        this.image = image;
         this.date = date;
         this.typeId = typeId;
         this.userId = userId;
@@ -68,10 +90,8 @@ public class Post {
         this.likes = likes;
     }
 
-    public Post(String title, String video, String image, LocalDateTime date, Long typeId, Long userId, List<Report> reports, List<Comment> comments, List<Like> likes, User user, Type type) {
+    public Post(String title,LocalDateTime date, Long typeId, Long userId, List<Report> reports, List<Comment> comments, List<Like> likes, User user, Type type) {
         this.title = title;
-        this.video = video;
-        this.image = image;
         this.date = date;
         this.typeId = typeId;
         this.userId = userId;
@@ -82,10 +102,8 @@ public class Post {
         this.type = type;
     }
 
-    public Post(String title, String video, String image, LocalDateTime date, Long typeId, Long userId, List<Report> reports, List<Comment> comments, User user, Type type) {
+    public Post(String title,  LocalDateTime date, Long typeId, Long userId, List<Report> reports, List<Comment> comments, User user, Type type) {
         this.title = title;
-        this.video = video;
-        this.image = image;
         this.date = date;
         this.typeId = typeId;
         this.userId = userId;
@@ -119,10 +137,8 @@ public class Post {
         this.userId = userId;
     }
 
-    public Post(String title, String video, String image, LocalDateTime date, Long typeId, Long userId, List<Report> reports, User user, Type type) {
+    public Post(String title,LocalDateTime date, Long typeId, Long userId, List<Report> reports, User user, Type type) {
         this.title = title;
-        this.video = video;
-        this.image = image;
         this.date = date;
         this.typeId = typeId;
         this.userId = userId;
@@ -131,10 +147,8 @@ public class Post {
         this.type = type;
     }
 
-    public Post(String title, String video, String image, LocalDateTime date, Long typeId, List<Report> reports, User user, Type type) {
+    public Post(String title,LocalDateTime date, Long typeId, List<Report> reports, User user, Type type) {
         this.title = title;
-        this.video = video;
-        this.image = image;
         this.date = date;
         this.typeId = typeId;
         this.reports = reports;
@@ -152,10 +166,8 @@ public class Post {
 
 
 
-    public Post(String title, String video, String image, LocalDateTime date, List<Report> reports, User user, Type type) {
+    public Post(String title, LocalDateTime date, List<Report> reports, User user, Type type) {
         this.title = title;
-        this.video = video;
-        this.image = image;
         this.date = date;
         this.reports = reports;
         this.user = user;
@@ -170,10 +182,8 @@ public class Post {
         this.reports = reports;
     }
 
-    public Post(String title, String video, String image, LocalDateTime date, User user, Type type) {
+    public Post(String title,LocalDateTime date, User user, Type type) {
         this.title = title;
-        this.video = video;
-        this.image = image;
         this.date = date;
         this.user = user;
         this.type = type;
@@ -187,10 +197,8 @@ public class Post {
         this.user = user;
     }
 
-    public Post(String title, String video, String image, LocalDateTime date, Type type) {
+    public Post(String title,LocalDateTime date, Type type) {
         this.title = title;
-        this.video = video;
-        this.image = image;
         this.date = date;
         this.type = type;
     }
@@ -206,10 +214,8 @@ public class Post {
     public Post() {
     }
 
-    public Post(String title, String video, String image, LocalDateTime date) {
+    public Post(String title,LocalDateTime date) {
         this.title = title;
-        this.video = video;
-        this.image = image;
         this.date = date;
     }
 
@@ -228,23 +234,6 @@ public class Post {
     public void setTitle(String title) {
         this.title = title;
     }
-
-    public String getVideo() {
-        return video;
-    }
-
-    public void setVideo(String video) {
-        this.video = video;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
     public LocalDateTime getDate() {
         return date;
     }

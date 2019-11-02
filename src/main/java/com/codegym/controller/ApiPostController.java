@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
+@CrossOrigin(origins = "*")
 @RestController
 public class ApiPostController {
     @Autowired
@@ -65,27 +66,15 @@ public class ApiPostController {
     public ResponseEntity<Post> updatePost(@RequestBody Post post,@PathVariable Long id){
         Post post1 = postService.findById(id);
         LocalDateTime date = java.time.LocalDateTime.now() ;
-        if(post1 == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        if(post.getTypeId() != null) {
-            Type type = typeService.findById(post.getTypeId());
-            post1.setType(type);
-        } else {
-            post1.setType(post.getType());
-        }
 
-        if(post.getUserId() != null) {
-            User user = userService.findById(post.getUserId());
-            post1.setUser(user);
-        } else {
-            post1.setUser(post.getUser());
-        }
+        User user = userService.findById(post.getUserId());
+        Type type = typeService.findById(post.getTypeId());
+
+        post1.setUser(user);
+        post1.setType(type);
         post1.setTypeId(post.getTypeId());
         post1.setUserId(post.getUserId());
         post1.setTitle(post.getTitle());
-        post1.setVideo(post.getVideo());
-        post1.setImage(post.getImage());
         post1.setDate(date);
 
         postService.save(post1);
